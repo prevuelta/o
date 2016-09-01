@@ -11,7 +11,7 @@ function o (selector) {
     if (matches) {
 
         if (matches[0] === '#') {
-            return document.getElementById(selector);
+            return document.getElementById(selector.slice(1));
         }
 
         if (matches[0] === '.' || matches[0] === '[') {
