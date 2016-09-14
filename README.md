@@ -2,6 +2,11 @@
 
 Where I will put my selector goodness OOooooo...
 
+###Usage:
+
 ```
-o()
+let el = o('#id');
+let elArr = o('.class');
+let elArr = o('[attr]');
+let elArr = o('div');
 ```
