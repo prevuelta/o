@@ -6,22 +6,17 @@ function o (selector) {
         return;
     }
 
-    let matches = new RegExp(/#|\.|\[|[a-z]/).exec(selector);
+    let matches = selector.match(/#[\w|-]+|\.[\w|-]+|\[[\w|-]+|\w+/g);
+
 
     if (matches) {
 
-        if (matches[0] === '#') {
+        if (selector.substr(0,1) === '#' && matches.length === 1) {
             return document.getElementById(selector.slice(1));
-        }
-
-        if (matches[0] === '.' || matches[0] === '[') {
+        } else if (matches.length > 1 || selector.substr(0,1) === '.' || selector.substr(0,1) === '[') {
             return document.querySelectorAll(selector);
-
-        }
-
-        // Match tag
-        if (matches[0]) {
-            return document.getElementByTagName(matches[0]);
+        } else {
+            return document.getElementsByTagName(selector);
         }
 
     } else {
